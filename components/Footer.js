@@ -14,7 +14,7 @@ export default function Footer() {
             className="space-y-4"
           >
             <h3 className="text-xl font-bold">Get in Touch</h3>
-            <p className="text-gray-400">Let's work together</p>
+            <p className="text-gray-400">Let&apos;s work together</p>
             <a href="mailto:your.email@example.com" className="text-purple-500 hover:text-purple-400">
               your.email@example.com
             </a>
