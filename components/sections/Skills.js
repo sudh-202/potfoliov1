@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export default function Skills() {
@@ -13,6 +13,21 @@ export default function Skills() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const { ref, controls } = useScrollAnimation();
+  const [floatingElements, setFloatingElements] = useState([]);
+
+  useEffect(() => {
+    // Generate floating elements only on client side
+    const elements = Array.from({ length: 20 }, (_, index) => ({
+      id: index,
+      initialX: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+      initialY: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+      animateY: [-20, 20],
+      animateX: [Math.random() * 20 - 10, Math.random() * 20 - 10],
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+    }));
+    setFloatingElements(elements);
+  }, []);
 
   const skills = [
     { name: "React", level: 90, color: "from-blue-500 to-cyan-500" },
@@ -84,22 +99,19 @@ export default function Skills() {
 
         {/* Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(20)].map((_, index) => (
+          {floatingElements.map((element) => (
             <motion.div
-              key={index}
+              key={element.id}
               className="absolute w-4 h-4 bg-white/5 rounded-full"
-              initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-              }}
+              initial={{ x: element.initialX, y: element.initialY }}
               animate={{
-                y: [0, -20, 0],
-                x: [0, Math.random() * 20 - 10, 0],
+                y: [0, element.animateY[0], element.animateY[1], 0],
+                x: [0, element.animateX[0], element.animateX[1], 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: element.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: element.delay,
               }}
             />
           ))}
