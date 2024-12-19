@@ -93,7 +93,7 @@ const Hero = () => {
           className="text-[#00FF00]"
           style={{ whiteSpace: 'nowrap' }}
         >
-          - SCROLL CAREFULLY, IT'S SMOOTH -
+          - SCROLL CAREFULLY, IT&apos;S SMOOTH -
           <br />
           <span style={{ fontSize: '0.8em' }}>↑ • ◎ • 地 • 滑</span>
         </motion.div>
