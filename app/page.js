@@ -33,10 +33,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-black">
-      {/* Background elements */}
-      <div className="fixed inset-0 overflow-hidden">
+    <main className="relative min-h-screen bg-black overflow-hidden">
+      {/* Background elements with proper stacking */}
+      <div className="fixed inset-0 w-full h-full">
         <AnimatedBackground />
+      </div>
+      <div className="fixed inset-0 w-full h-full">
         <GradientBalls />
       </div>
       

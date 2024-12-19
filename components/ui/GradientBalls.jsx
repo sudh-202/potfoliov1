@@ -43,29 +43,31 @@ const GradientBalls = () => {
   }, [leftBallX, leftBallY, rightBallX, rightBallY]);
 
   return (
-    <div className="fixed inset-0 w-full h-screen pointer-events-none" style={{ zIndex: 1 }}>
+    <div className="fixed inset-0 w-full h-[200vh] pointer-events-none" style={{ zIndex: 2 }}>
       {/* Left Gradient Ball */}
       <motion.div
-        className="absolute w-[1000px] h-[1000px] rounded-full opacity-30 blur-3xl"
+        className="absolute w-[1000px] h-[1000px] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle, #00FF00 0%, rgba(0,255,0,0) 70%)",
+          background: "radial-gradient(circle, rgba(0,255,0,0.3) 0%, rgba(0,255,0,0) 70%)",
           left: "0%",
           top: "50%",
           x: leftSpringX,
           y: leftSpringY,
           transform: "translate(-50%, -50%)",
+          mixBlendMode: "screen"
         }}
       />
       {/* Right Gradient Ball */}
       <motion.div
-        className="absolute w-[1000px] h-[1000px] rounded-full opacity-30 blur-3xl"
+        className="absolute w-[1000px] h-[1000px] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle, #00FF00 0%, rgba(0,255,0,0) 70%)",
+          background: "radial-gradient(circle, rgba(0,255,0,0.3) 0%, rgba(0,255,0,0) 70%)",
           right: "0%",
           top: "50%",
           x: rightSpringX,
           y: rightSpringY,
           transform: "translate(50%, -50%)",
+          mixBlendMode: "screen"
         }}
       />
     </div>
