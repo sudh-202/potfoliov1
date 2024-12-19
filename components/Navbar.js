@@ -33,7 +33,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             className="text-xl font-bold text-white"
           >
-            Portfolio
+            Sudhanshu 
+
           </motion.div>
           <ul className="hidden md:flex space-x-8">
             {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
@@ -47,7 +48,6 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="md:hidden">
-            {/* Mobile menu button - to be implemented */}
             <button className="text-white">Menu</button>
           </div>
         </div>

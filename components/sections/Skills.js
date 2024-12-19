@@ -1,126 +1,116 @@
 "use client";
+import { motion } from "framer-motion";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-
-export default function Skills() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const { ref, controls } = useScrollAnimation();
-  const [floatingElements, setFloatingElements] = useState([]);
-
-  useEffect(() => {
-    // Generate floating elements only on client side
-    const elements = Array.from({ length: 20 }, (_, index) => ({
-      id: index,
-      initialX: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-      initialY: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-      animateY: [-20, 20],
-      animateX: [Math.random() * 20 - 10, Math.random() * 20 - 10],
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 2,
-    }));
-    setFloatingElements(elements);
-  }, []);
-
+const Skills = () => {
   const skills = [
-    { name: "React", level: 90, color: "from-blue-500 to-cyan-500" },
-    { name: "Next.js", level: 85, color: "from-gray-500 to-gray-900" },
-    { name: "JavaScript", level: 88, color: "from-yellow-400 to-yellow-600" },
-    { name: "TypeScript", level: 80, color: "from-blue-400 to-blue-600" },
-    { name: "TailwindCSS", level: 92, color: "from-cyan-400 to-blue-500" },
-    { name: "Node.js", level: 85, color: "from-green-500 to-green-700" },
+    {
+      category: "Frontend",
+      items: ["React", "Next.js", "TailwindCSS", "TypeScript", "Framer Motion"],
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL"],
+    },
+    {
+      category: "Tools",
+      items: ["Git", "Docker", "AWS", "Figma", "VS Code"],
+    },
   ];
 
   return (
-    <section
-      id="skills"
-      ref={containerRef}
-      className="min-h-screen relative py-20 bg-black overflow-hidden"
-    >
-      <motion.div style={{ y }} className="container mx-auto px-6">
+    <section className="relative min-h-screen bg-black overflow-hidden py-20" id="skills">
+      {/* Gradient Balls */}
+      <motion.div
+        className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, #00FF00 0%, rgba(0,255,0,0) 70%)",
+          left: "10%",
+          bottom: "10%",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            show: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.8,
-              },
-            },
-          }}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Skills & Expertise
+          <h2 className="text-6xl font-bold mb-4 font-unbounded">
+            <span className="text-[#00FF00]">Technical</span> Skills
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Technologies I work with
-          </p>
+          <div className="w-24 h-1 bg-[#00FF00] mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skills.map((skillSet, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-              }}
-              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="bg-black/40 backdrop-blur-sm border border-[#00FF00]/20 rounded-xl p-6"
             >
-              <div className="mb-2 flex justify-between">
-                <span className="text-white font-medium">{skill.name}</span>
-                <span className="text-gray-400">{skill.level}%</span>
-              </div>
-              <div className="h-3 bg-gray-900 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
-                />
+              <h3 className="text-2xl font-bold mb-6 text-[#00FF00]">
+                {skillSet.category}
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {skillSet.items.map((skill, skillIndex) => (
+                  <motion.div
+                    key={skillIndex}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: (index * skillSet.items.length + skillIndex) * 0.1,
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-[#00FF00]"></div>
+                    <span className="text-gray-300">{skill}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {floatingElements.map((element) => (
-            <motion.div
-              key={element.id}
-              className="absolute w-4 h-4 bg-white/5 rounded-full"
-              initial={{ x: element.initialX, y: element.initialY }}
-              animate={{
-                y: [0, element.animateY[0], element.animateY[1], 0],
-                x: [0, element.animateX[0], element.animateX[1], 0],
-              }}
-              transition={{
-                duration: element.duration,
-                repeat: Infinity,
-                delay: element.delay,
-              }}
-            />
+        {/* Skill Bars */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          {[
+            { skill: "Frontend Development", progress: 90 },
+            { skill: "Backend Development", progress: 85 },
+            { skill: "UI/UX Design", progress: 80 },
+            { skill: "Problem Solving", progress: 95 },
+          ].map((item, index) => (
+            <div key={index} className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-300">{item.skill}</span>
+                <span className="text-[#00FF00]">{item.progress}%</span>
+              </div>
+              <div className="h-2 bg-black/40 rounded-full overflow-hidden border border-[#00FF00]/20">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${item.progress}%` }}
+                  transition={{ duration: 1, delay: index * 0.2 }}
+                  className="h-full bg-[#00FF00]"
+                />
+              </div>
+            </div>
           ))}
-        </div>
-      </motion.div>
-
-      {/* Parallax Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.1)_0%,transparent_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-purple-500/5 to-black/0" />
+        </motion.div>
+      </div>
     </section>
   );
-}
+};
+
+export default Skills;
