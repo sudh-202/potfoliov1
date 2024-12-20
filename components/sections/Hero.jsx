@@ -7,7 +7,7 @@ import ScrollDown from "../ui/ScrollDown";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-[100vw] overflow-hidden">
+    <div className="relative h-screen w-[100vw] overflow-hidden ">
       {/* Dark background */}
       <div className="absolute inset-0 bg-black"></div>
       <GradientBall />

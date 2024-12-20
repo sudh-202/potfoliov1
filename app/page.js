@@ -33,14 +33,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden">
+    <main className="relative min-h-screen bg-black overflow-hidden z-30">
       {/* Background elements with proper stacking */}
       <div className="fixed inset-0 w-full h-full">
         <AnimatedBackground />
       </div>
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative">
         <Hero />
         <About />
         <Projects />

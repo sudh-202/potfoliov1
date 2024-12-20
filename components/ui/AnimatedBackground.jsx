@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const AnimatedBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden z-0">
       {/* Vertical Lines */}
       <div className="absolute inset-0 flex justify-around">
         {[...Array(20)].map((_, i) => (
