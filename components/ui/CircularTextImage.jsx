@@ -78,7 +78,7 @@ const CircularTextImage = () => {
 
           {/* Expression */}
           <div 
-            className={`absolute bottom-[30%] left-1/2 -translate-x-1/2 transition-all duration-300 ${
+            className={`absolute bottom-[20%] left-1/2 -translate-x-1/2 transition-all duration-300 ${
               isSurprised 
                 ? 'w-[2vw] h-[2vw] rounded-full border-none bg-black' 
                 : 'w-[4vw] h-[2vw] min-w-[20px] min-h-[10px] border-[0.3vw] border-t-0 border-black rounded-b-[2vw]'

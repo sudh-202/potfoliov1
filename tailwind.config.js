@@ -110,6 +110,38 @@ module.exports = {
             backgroundSize: '200% 200%'
           }
         },
+        'ball-load': {
+          '0%': { 
+            transform: 'translate(-50%, -100%) scale(0.8)',
+            opacity: '0'
+          },
+          '50%': {
+            transform: 'translate(-50%, -75%) scale(1.1)',
+            opacity: '1'
+          },
+          '75%': {
+            transform: 'translate(-50%, -75%) scale(0.95)',
+          },
+          '100%': {
+            transform: 'translate(-50%, -75%) scale(1)',
+          }
+        },
+        'drop-in': {
+          '0%': { 
+            transform: 'translate(-50%, -200%)',
+          },
+          '100%': {
+            transform: 'translate(-50%, -75%)',
+          }
+        },
+        'pulse-scale': {
+          '0%, 100%': { 
+            transform: 'translate(-50%, -75%) scale(1)',
+          },
+          '50%': {
+            transform: 'translate(-50%, -75%) scale(1.05)',
+          }
+        },
       },
       animation: {
         squish: 'squish 3s ease-in-out infinite',
@@ -123,6 +155,9 @@ module.exports = {
         'spin-horizontal': 'spin-horizontal 8s linear infinite',
         'border-rotate': 'border-rotate 8s linear infinite',
         'border-flow': 'border-flow 8s ease infinite',
+        'ball-load': 'ball-load 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'drop-in': 'drop-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'pulse-scale': 'pulse-scale 3s ease-in-out infinite',
       },
     },
   },

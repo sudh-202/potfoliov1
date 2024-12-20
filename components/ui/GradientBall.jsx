@@ -1,12 +1,28 @@
 "use client";
+import { useState, useEffect } from "react";
 
 const GradientBall = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Add pulse animation after drop-in completes
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000); // Same as drop-in duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="fixed top-0 left-1/2 -translate-x-1/2 -translate-y-[75%] w-[100vw] h-[100vh]">
+    <div className={`fixed top-0 left-1/2 w-[100vw] h-[80vh] ${
+      isLoaded ? 'animate-pulse-scale' : 'animate-drop-in'
+    }`}>
       {/* Flowing border container */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 rounded-full animate-border-flow bg-gradient-to-r "></div>
-        <div className="absolute inset-0 rounded-full animate-border-flow bg-gradient-to-b   " style={{ animationDelay: '-1s' }}></div>
+        <div className="absolute inset-0 rounded-full animate-border-flow bg-gradient-to-r"></div>
+        <div className="absolute inset-0 rounded-full animate-border-flow bg-gradient-to-b" 
+          style={{ animationDelay: '-1s' }}
+        ></div>
       </div>
       
       {/* Main gradient ball */}
