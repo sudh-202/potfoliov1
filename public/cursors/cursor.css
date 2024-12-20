@@ -1,0 +1,16 @@
+* {
+  cursor: url('/1.webp') 15 15, auto !important;
+}
+
+a, button, [role="button"], select, input[type="submit"], input[type="image"], input[type="button"], input[type="reset"], label[for], 
+.hover-pointer, [class*="hover"], [class*="animate"], iframe, [class*="cursor-pointer"] {
+  cursor: url('/2.webp') 15 15, pointer !important;
+}
+
+/* Active state for clickable elements */
+a:active, button:active, [role="button"]:active, input[type="submit"]:active, input[type="button"]:active,
+.hover-pointer:active, [class*="hover"]:active {
+  cursor: url('/2.webp') 15 15, pointer !important;
+  transform: scale(0.98);
+  transition: transform 0.1s;
+}

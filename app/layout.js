@@ -1,7 +1,11 @@
 import { inter, spaceGrotesk, sora } from './fonts'
 import "./globals.css";
+import "@/public/cursors/cursor.css";
 import Navbar from "@/components/Navbar";
-import  Footer from '@/components/Footer'
+import Footer from '@/components/Footer'
+import CustomCursor from "@/components/ui/CustomCursor";
+import CursorClick from "@/components/ui/CursorClick";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 export const metadata = {
   title: "Portfolio",
@@ -35,7 +39,10 @@ export default function RootLayout({ children }) {
           }
         `}</style>
       </head>
-      <body className={sora.className}>
+      <body className={`${sora.className}`}>
+        <ScrollProgress />
+        <CustomCursor />
+        <CursorClick />
         <main className="min-h-screen bg-black text-white">
           <Navbar />
           {children}

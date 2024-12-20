@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedBackground from "../ui/AnimatedBackground";
 import CircularTextImage from "../ui/CircularTextImage";
 import GradientBall from "@/components/ui/GradientBall";
+import ScrollDown from "../ui/ScrollDown";
 
 const Hero = () => {
   return (
@@ -71,7 +72,8 @@ const Hero = () => {
         }}
       >
         <div className="text-[#00FF00] flex flex-col items-center">
-          <span className="text-[1.2vw] whitespace-nowrap">
+          <span className="text-[1.2vw] whitespace-nowrap flex flex-col items-center gap-4">
+            <ScrollDown/>
             - SCROLL CAREFULLY, ITS SMOOTH -
           </span>
           <span className="text-[1vw] mt-[0.5vh]">↑ • ◎ • 地 • 滑</span>
