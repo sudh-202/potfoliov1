@@ -19,5 +19,3 @@ export const sora = Sora({
   display: 'swap',
 })
 
-// Since Fahkwang and Unbounded are not available in next/font/google, we'll use a CDN
-// Add these fonts to layout.js using a link tag

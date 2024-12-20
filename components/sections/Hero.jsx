@@ -25,19 +25,32 @@ const Hero = () => {
           <h1 className="flex flex-col">
             <span className="text-white text-[8vw] font-bold leading-[8vw] flex items-center justify-center">
               <div
-                style={{
-                  width: "10vw",
-                  height: "10vw",
-                  minWidth: "120px",
-                  minHeight: "120px",
-                }}
+               className=""
               >
                 <CircularTextImage />
               </div>
               BE WILD!
             </span>
             <span className="text-[#00FF00] text-[8vw] font-bold leading-[8vw]">
-              CREATIVE!
+              CREATIVE!{" "}
+              <div
+                className="absolute z-10 bg-[#00FF00]  rounded-full right-[17vw]"
+              >
+                <motion.div
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  transition={{ duration: 1 }}
+                  className="w-[8vw] h-[8vw] "
+                >
+                  <iframe
+                    src="https://lottie.host/embed/20ff52b7-2b9f-44a0-9945-75a5bc224b2d/1FFeEdRFSt.lottie"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </motion.div>
+              </div>
             </span>
             <span className="text-white text-[8vw] font-bold leading-[8vw]">
               AND COOL!
@@ -46,35 +59,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Geometric Design */}
-      <div
-        className="absolute z-10 bg-white rounded-full"
-        style={{
-          right: "10vw",
-          top: "70vh",
-          transform: "translateY(-50%)",
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, rotate: -90 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          transition={{ duration: 1 }}
-          style={{
-            width: "10vw",
-            height: "10vw",
-            minWidth: "120px",
-            minHeight: "120px",
-          }}
-        >
-          <iframe
-            src="https://lottie.host/embed/20ff52b7-2b9f-44a0-9945-75a5bc224b2d/1FFeEdRFSt.lottie"
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        </motion.div>
-      </div>
 
       {/* Scroll Text */}
       <motion.div
@@ -88,7 +72,7 @@ const Hero = () => {
       >
         <div className="text-[#00FF00] flex flex-col items-center">
           <span className="text-[1.2vw] whitespace-nowrap">
-            - SCROLL CAREFULLY, IT'S SMOOTH -
+            - SCROLL CAREFULLY, ITS SMOOTH -
           </span>
           <span className="text-[1vw] mt-[0.5vh]">↑ • ◎ • 地 • 滑</span>
         </div>
