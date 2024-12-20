@@ -1,12 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import AnimatedBackground from "../ui/AnimatedBackground";
+import CircularTextImage from "../ui/CircularTextImage";
+import GradientBall from "@/components/ui/GradientBall";
 
 const Hero = () => {
   return (
-    <div className="relative h-[100vh] w-[100vw] overflow-hidden">
+    <div className="relative h-screen w-[100vw] overflow-hidden">
       {/* Dark background */}
       <div className="absolute inset-0 bg-black"></div>
+      <GradientBall />
 
       {/* Animated lines background */}
       <AnimatedBackground />
@@ -14,90 +17,82 @@ const Hero = () => {
       {/* Main Content */}
       <div className="absolute top-[50vh] left-[50vw] transform -translate-x-1/2 -translate-y-1/2 text-center w-full z-10">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: "5vh" }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={{ zoom: 1 }}
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div 
-              className="rounded-full border-2 border-[#00FF00] flex items-center justify-center rotate-12"
-              style={{ 
-                width: '120px', 
-                height: '120px',
-                minWidth: '120px',
-                minHeight: '120px'
-              }}
-            >
-              <span className="text-[#00FF00]" style={{ fontSize: '14px', whiteSpace: 'nowrap' }}>JUST A STUDIO</span>
-            </div>
-          </div>
-          <h1 style={{ 
-            fontSize: 'clamp(60px, 8vw, 120px)', 
-            lineHeight: '1.2',
-            whiteSpace: 'nowrap'
-          }}>
-            <span className="text-white">BE WILD!</span>
-            <br />
-            <span className="text-[#00FF00]">CREATIVE!</span>
-            <br />
-            <span className="text-white">AND COOL!</span>
+          <h1 className="flex flex-col">
+            <span className="text-white text-[8vw] font-bold leading-[8vw] flex items-center justify-center">
+              <div
+                style={{
+                  width: "10vw",
+                  height: "10vw",
+                  minWidth: "120px",
+                  minHeight: "120px",
+                }}
+              >
+                <CircularTextImage />
+              </div>
+              BE WILD!
+            </span>
+            <span className="text-[#00FF00] text-[8vw] font-bold leading-[8vw]">
+              CREATIVE!
+            </span>
+            <span className="text-white text-[8vw] font-bold leading-[8vw]">
+              AND COOL!
+            </span>
           </h1>
         </motion.div>
       </div>
 
       {/* Geometric Design */}
-      <div 
-        className="absolute z-10"
+      <div
+        className="absolute z-10 bg-white rounded-full"
         style={{
-          right: 'max(32px, 5vw)',
-          top: '50vh',
-          transform: 'translateY(-50%)'
+          right: "10vw",
+          top: "70vh",
+          transform: "translateY(-50%)",
         }}
       >
         <motion.div
           initial={{ opacity: 0, rotate: -90 }}
           animate={{ opacity: 1, rotate: 0 }}
           transition={{ duration: 1 }}
-          style={{ 
-            width: 'clamp(120px, 15vw, 200px)',
-            height: 'clamp(120px, 15vw, 200px)',
-            minWidth: '120px',
-            minHeight: '120px'
+          style={{
+            width: "10vw",
+            height: "10vw",
+            minWidth: "120px",
+            minHeight: "120px",
           }}
         >
-          <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-            <path
-              d="M50 0 L100 87 L0 87 Z"
-              fill="none"
-              stroke="#00FF00"
-              strokeWidth="1"
-            />
-          </svg>
+          <iframe
+            src="https://lottie.host/embed/20ff52b7-2b9f-44a0-9945-75a5bc224b2d/1FFeEdRFSt.lottie"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </motion.div>
       </div>
 
       {/* Scroll Text */}
-      <div 
-        className="absolute left-[50vw] text-center z-10"
+      <motion.div
+        className="relative top-[80vh] z-10 text-center "
+        initial={{ opacity: 0, y: "2vh" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1 }}
         style={{
-          bottom: 'max(24px, 3vh)',
-          transform: 'translateX(-50%)',
-          fontSize: 'clamp(12px, 1.5vw, 16px)'
+          transform: "translateX(-50%)",
         }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="text-[#00FF00]"
-          style={{ whiteSpace: 'nowrap' }}
-        >
-          - SCROLL CAREFULLY, IT&apos;S SMOOTH -
-          <br />
-          <span style={{ fontSize: '0.8em' }}>↑ • ◎ • 地 • 滑</span>
-        </motion.div>
-      </div>
+        <div className="text-[#00FF00] flex flex-col items-center">
+          <span className="text-[1.2vw] whitespace-nowrap">
+            - SCROLL CAREFULLY, IT'S SMOOTH -
+          </span>
+          <span className="text-[1vw] mt-[0.5vh]">↑ • ◎ • 地 • 滑</span>
+        </div>
+      </motion.div>
     </div>
   );
 };

@@ -7,8 +7,8 @@ import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
-import GradientBalls from "@/components/ui/GradientBalls";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
+
 
 export default function Home() {
   useEffect(() => {
@@ -37,9 +37,6 @@ export default function Home() {
       {/* Background elements with proper stacking */}
       <div className="fixed inset-0 w-full h-full">
         <AnimatedBackground />
-      </div>
-      <div className="fixed inset-0 w-full h-full">
-        <GradientBalls />
       </div>
       
       {/* Content */}
