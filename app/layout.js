@@ -1,11 +1,9 @@
-import { inter, spaceGrotesk, sora } from './fonts'
+import { inter, spaceGrotesk, sora, dancingScript } from './fonts'
 import "./globals.css";
 import "@/public/cursors/cursor.css";
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer'
-import CustomCursor from "@/components/ui/CustomCursor";
-import CursorClick from "@/components/ui/CursorClick";
-import ScrollProgress from "@/components/ui/ScrollProgress";
+import ClientWrapper from "@/components/ClientWrapper";
 
 export const metadata = {
   title: "Portfolio",
@@ -14,40 +12,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${sora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${sora.variable} ${dancingScript.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <style>{`
-          html {
-            zoom: 100%;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-          }
-          body {
-            min-width: 100vw;
-            min-height: 100vh;
-            overflow-x: hidden;
-            transform-origin: center top;
-          }
-          * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-          }
-        `}</style>
+       
       </head>
-      <body className={`${sora.className}`}>
-        <ScrollProgress />
-        <CustomCursor />
-        <CursorClick />
-        <main className="min-h-screen bg-black text-white">
-          <Navbar />
-          {children}
-          <Footer />
-        </main>
+      <body className={`${sora.className} ${dancingScript.variable}`}>
+        <ClientWrapper>
+          <main className="min-h-screen bg-black text-white">
+            <Navbar />
+            {children}
+            <Footer />
+          </main>
+        </ClientWrapper>
       </body>
     </html>
   );

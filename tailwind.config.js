@@ -12,6 +12,7 @@ module.exports = {
         'inter': ['var(--font-inter)'],
         'space-grotesk': ['var(--font-space-grotesk)'],
         'sora': ['var(--font-sora)'],
+        'cursive': ['var(--font-dancing-script)'],
       },
       keyframes: {
         scroll: {

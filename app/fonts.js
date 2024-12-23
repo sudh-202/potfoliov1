@@ -1,4 +1,4 @@
-import { Inter, Space_Grotesk, Sora } from 'next/font/google'
+import { Inter, Space_Grotesk, Sora, Dancing_Script } from 'next/font/google'
 import localFont from 'next/font/local'
 
 export const inter = Inter({ 
@@ -19,3 +19,8 @@ export const sora = Sora({
   display: 'swap',
 })
 
+export const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-dancing-script',
+})

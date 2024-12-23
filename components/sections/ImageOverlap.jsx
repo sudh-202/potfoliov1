@@ -1,9 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-
-// Lerp function for smooth interpolation
-const lerp = (start, end, factor) => start * (1 - factor) + end * factor;
+import { motion } from "framer-motion";
 
 const ImageOverlap = () => {
   const containerRef = useRef(null);
@@ -11,22 +8,24 @@ const ImageOverlap = () => {
   const [smoothScrollY, setSmoothScrollY] = useState(0);
   const animationRef = useRef(null);
 
-  // Track scroll position
+  // Track scroll position with improved calculations
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
         
-        // Calculate how much of the container is in view
-        const visiblePercentage = Math.max(
-          0,
-          Math.min(
-            100,
-            ((windowHeight - rect.top) / (windowHeight + rect.height)) * 100
-          )
-        );
-        setScrollY(visiblePercentage);
+        // Start when element enters viewport and end when it leaves
+        const start = windowHeight;
+        const end = -elementHeight;
+        
+        // Calculate progress
+        const progress = (start - elementTop) / (start - end);
+        const clampedProgress = Math.min(Math.max(progress, 0), 1) * 100;
+        
+        setScrollY(clampedProgress);
       }
     };
 
@@ -35,11 +34,14 @@ const ImageOverlap = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Smooth animation loop
+  // Smooth animation with optimized parameters
   useEffect(() => {
     const smoothScroll = () => {
-      // Smooth out the scroll value with lerp
-      setSmoothScrollY(prev => lerp(prev, scrollY, 0.1));
+      setSmoothScrollY(prev => {
+        const diff = scrollY - prev;
+        // Adjust this value for smoother/faster animation (0.1 = smooth, 0.3 = faster)
+        return prev + diff * 0.15;
+      });
       animationRef.current = requestAnimationFrame(smoothScroll);
     };
 
@@ -51,14 +53,13 @@ const ImageOverlap = () => {
     };
   }, [scrollY]);
 
-  // Transform smooth scroll percentage to clip value
   const clipValue = Math.max(0, Math.min(100, smoothScrollY));
 
   return (
-    <div className="w-full py-20 flex items-center justify-center">
+    <div className="w-full py-[5vh] flex items-center justify-center">
       <div 
         ref={containerRef}
-        className="relative w-full max-w-7xl mx-auto h-[70vh] overflow-hidden rounded-xl"
+        className="relative w-[70vw] mx-auto h-[70vh] overflow-hidden rounded-xl"
       >
         {/* Base Image */}
         <div className="absolute inset-0">
@@ -75,7 +76,7 @@ const ImageOverlap = () => {
           style={{
             clipPath: `inset(${clipValue}% 0 0 0)`,
             WebkitClipPath: `inset(${clipValue}% 0 0 0)`,
-            transition: 'all 0.01s linear'
+            willChange: 'clip-path'
           }}
         >
           <img
@@ -90,18 +91,9 @@ const ImageOverlap = () => {
           className="absolute left-0 right-0 h-[2px] bg-[#00ff00] z-10 shadow-[0_0_10px_#00ff00]"
           style={{
             top: `${clipValue}%`,
-            transition: 'all 0.01s linear'
+            willChange: 'transform'
           }}
-        >
-          {/* Line Handle */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
-            <div className="w-4 h-4 bg-white rounded-full"></div>
-          </div>
-        </div>
-
-        {/* Side Labels */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 transform -rotate-90 text-xs tracking-widest text-white">PORTRAIT</div>
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 transform rotate-90 text-xs tracking-widest text-white">PORTRAIT</div>
+        />
       </div>
     </div>
   );
