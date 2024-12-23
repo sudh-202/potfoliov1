@@ -49,9 +49,9 @@ export default function About() {
             ))}
           </h2>
           <div className="flex flex-row gap-6 items-center justify-between">
-            <p className="text-left text-[0.95vw] text-white font-bold">
+            <p className="text-left text-[0.95vw] text-white font-bold hover:scale-150 transition-transform">
               Hello, this is Sudhanshu, a full-stack <br/>developer
-              Let's do some cool things !! 
+              Lets do some cool things !! 
             </p>
             <h3 
               className="font-playwrite font-bold text-[5vw] text-[#00ff00] rotate-[8deg] hover:scale-110 hover:rotate-[2deg] tracking-tighter transition-transform duration-300"
