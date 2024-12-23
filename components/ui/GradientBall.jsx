@@ -14,7 +14,7 @@ const GradientBall = () => {
   }, []);
 
   return (
-    <div className={` fixed top-0 left-1/2 w-[100vw] h-[80vh] ${
+    <div className={`z-10 fixed top-0 left-1/2 w-[100vw] h-[80vh] ${
       isLoaded ? 'animate-pulse-scale' : 'animate-drop-in'
     }`}>
       {/* Flowing border container */}

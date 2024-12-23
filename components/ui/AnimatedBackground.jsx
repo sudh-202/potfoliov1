@@ -9,7 +9,7 @@ const AnimatedBackground = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="h-[100vh] w-[0.1vw] bg-[#00FF00] opacity-20"
+            className="h-[100vh] w-[0.1vw] bg-[#00ff00a6] opacity-20"
             initial={{ height: 0 }}
             animate={{ height: "100vh" }}
             transition={{
@@ -26,7 +26,7 @@ const AnimatedBackground = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-[100vw] h-[0.1vw] bg-[#00FF00] opacity-20"
+            className="w-[100vw] h-[0.1vw] bg-[#00ff00a6] opacity-20"
             initial={{ width: 0 }}
             animate={{ width: "100vw" }}
             transition={{

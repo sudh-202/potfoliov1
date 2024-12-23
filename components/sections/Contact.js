@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden py-20" id="contact">
+    <section className="z-30 relative min-h-screen bg-black overflow-hidden py-20" id="contact">
       {/* Gradient Balls */}
       <motion.div
         className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-3xl"

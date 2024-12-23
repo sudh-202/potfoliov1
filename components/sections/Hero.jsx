@@ -7,7 +7,7 @@ import ScrollDown from "../ui/ScrollDown";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-[100vw] overflow-hidden ">
+    <div className="relative h-screen w-[100vw] overflow-hidden Z-20">
       {/* Dark background */}
       <div className="absolute inset-0 bg-black"></div>
       <GradientBall />
@@ -16,7 +16,7 @@ const Hero = () => {
       <AnimatedBackground />
 
       {/* Main Content */}
-      <div className="absolute top-[50vh] left-[50vw] transform -translate-x-1/2 -translate-y-1/2 text-center w-full z-10">
+      <div className="absolute top-[50vh] left-[50vw] transform -translate-x-1/2 -translate-y-1/2 text-center w-full z-0">
         <motion.div
           initial={{ opacity: 0, y: "5vh" }}
           animate={{ opacity: 1, y: 0 }}
