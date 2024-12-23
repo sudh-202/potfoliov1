@@ -41,7 +41,7 @@ const ScrollProgress = () => {
         <div className="relative w-12 h-12 rounded-full bg-black/10 backdrop-blur-sm flex items-center justify-center group cursor-pointer"
              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <span className="relative text-2xl transform rotate-180">↓</span>
+          <span className="relative text-2xl transform rotate-180 text-white">↓</span>
           
           {/* Progress circle */}
           <svg
