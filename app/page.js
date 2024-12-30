@@ -43,7 +43,7 @@ export default function Home() {
       <div className="relative">
         <Hero />
         <About />
-        <Projects />
+        {/* <Projects /> */}
         <Skills />
         <Contact />
       </div>
