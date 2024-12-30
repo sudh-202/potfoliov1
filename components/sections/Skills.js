@@ -32,7 +32,7 @@ const Skills = () => {
   });
 
   const horseY = useTransform(scrollYProgress, [0, 1], ["25vh", "-15vh"]);
-  const brainY = useTransform(scrollYProgress, [0, 1], ["0vh", "-25vh"]);
+  const brainY = useTransform(scrollYProgress, [0, 1], ["0vh", "-65vh"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0vh", "15vh"]);
 
   const MediaContainer = ({ src, className }) => {
