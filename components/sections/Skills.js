@@ -2,7 +2,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { skillsData } from '@/constants/skillsData';
+
+const StickHero = dynamic(() => import('@/components/game/StickHero'), {
+  ssr: false
+});
 
 const Skills = () => {
   const { skills, bottomSection } = skillsData;
@@ -202,6 +207,9 @@ const Skills = () => {
           />
         </motion.div>
       </motion.div>
+
+      {/* Stick Hero Game Section */}
+      <StickHero />
     </section>
   );
 };
