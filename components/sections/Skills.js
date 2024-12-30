@@ -2,29 +2,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { skillsData } from '@/constants/skillsData';
 
 const Skills = () => {
-  const skills = [
-    {
-      number: "01",
-      title: "GRAPHIC DESIGNER",
-      description: "爱做一些奇奇怪怪的设计",
-      video: "/videos/graphics.mp4"
-    },
-    {
-      number: "02",
-      title: "VIDEO EDITOR",
-      description: "爱剪一些莫名其妙的视频",
-      video: "/videos/graphics.mp4"
-    },
-    {
-      number: "03",
-      title: "UX DESIGNER",
-      description: "爱做一些不同一格的交互",
-      video: "/videos/graphics.mp4"
-    }
-  ];
-
+  const { skills, bottomSection } = skillsData;
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -154,7 +135,7 @@ const Skills = () => {
               }`}
             >
               <div className="space-y-[2vh]">
-                <div className="text-white text-[3vw] font-bold">I'M A</div>
+                <div className="text-white text-[3vw] font-bold">I&apos;M A</div>
                 <h3 className="text-[#00FF00] text-[4vw] font-bold leading-none">
                   {skill.title}
                 </h3>
@@ -199,14 +180,14 @@ const Skills = () => {
           style={{ y: textY }}
           className="text-center space-y-[2vh] z-20"
         >
-          <div className="text-white text-[3vw] font-bold">FULL OF CREATIVITY</div>
+          <div className="text-white text-[3vw] font-bold">{bottomSection.creativity.title}</div>
           <div className="text-[5vw] font-bold">
-            <span className="text-white">ABLE TO</span>{' '}
-            <span className="text-[#00FF00]">IMAGINE</span>
+            <span className="text-white">{bottomSection.creativity.line1.start}</span>{' '}
+            <span className="text-[#00FF00]">{bottomSection.creativity.line1.end}</span>
           </div>
           <div className="text-[4vw] font-bold">
-            <span className="text-[#00FF00]">READY</span>{' '}
-            <span className="text-white">TO CREATE</span>
+            <span className="text-[#00FF00]">{bottomSection.creativity.line2.start}</span>{' '}
+            <span className="text-white">{bottomSection.creativity.line2.end}</span>
           </div>
         </motion.div>
 
